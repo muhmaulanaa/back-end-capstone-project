@@ -1,0 +1,113 @@
+:root {
+  --primary: #1e463b;
+  --secondary: #3c806d;
+  --muda: #e2ede9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", "sans-Serif";
+  background-color: var(--muda);
+  color: var(--primary);
+}
+
+.login {
+  padding: 50px;
+}
+
+/* ===== */
+/* form */
+/* ===== */
+.form-container {
+  background-color: var(--primary);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(146, 144, 144, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-container h2 {
+  margin-bottom: 15px;
+  color: var(--muda);
+}
+
+.form-container p {
+  color: var(--muda);
+  font-weight: 200;
+  font-size: 12px;
+  text-align: center;
+}
+
+form p a {
+  color: #4af3b5;
+  font-weight: bolder;
+  text-align: center;
+}
+
+form {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  margin-right: 20px;
+  color: var(--muda);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 300;
+  font-size: small;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: var(--muda);
+  color: var(--primary);
+  font-weight: 300;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group label {
+  margin-right: 10px;
+}
+
+input[type="submit"] {
+  background-color: #4af3b5;
+  border: 1px solid #4af3b5;
+  color: var(--primary);
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Poppins";
+  margin-left: 140px;
+  width: 30%;
+}
+
+input[type="submit"]:hover {
+  background-color: #37a77d;
+  color: var(--muda);
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  
+  <!-- Box icons -->
+  <link rel="stylesheet" href="boxicons.min.css">
+  <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <!-- logo tab -->
+  <link rel="shortcut icon" href="assets/logo-tabb.png" type="image/x-icon" />
+  <link rel="stylesheet" href="CSS/checkout.css" />
+  <link rel="stylesheet" href="CSS/style.css" />
+
+  <title>Coffeee.in Checkout</title>
+</head>
+
+<body>
+  <header>
+    <div class="icon-back">
+      <a href="http://localhost:3000/static/products.html"><i class='bx bx-arrow-back'></i></a>
+    </div>
+    <h1 class="title-checkout">Checkout</h1>
+    <br />
+    <hr />
+  </header>
+
+  <form id="checkout-form">
+    <div class="rowcheckout">
+
+      <!-- Cart -->
+      <div class="col-25">
+        <div class="containercheckout">
+          <h4>
+            Cart
+            <span class="price" style="color: black">
+              <i class="fa fa-shopping-cart"></i>
+              <b>4</b>
+            </span>
+          </h4>
+          <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+          <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+          <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+          <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+          <hr />
+          <p>
+            Total <span class="price" style="color: black"><b>$30</b></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Form Data User -->
+      <div class="col-75">
+        <div class="containercheckout">
+          <form action="/action_page.php">
+            <div class="rowcheckout">
+              <div class="col-50">
+                <h3>Your Address</h3>
+                <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Enter Your Name" />
+                <label for="p-number"><i class="fa fa-institution"></i>Phone Number</label>
+                <input type="text" id="p-number" name="p-number" placeholder="Enter Your Phone Number " />
+                <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                <input type="text" id="email" name="email" placeholder="Enter Your Email" />
+                <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                <input type="text" id="adr" name="address" placeholder="Enter Your Address" />
+              </div>
+
+              <!-- Payment method -->
+              <div class="col-50">
+                <h3>Payment</h3>
+                <label class="labelpayment" for="transferbank">Payment Method</label>
+                <div class="radio">
+                  <label><input type="radio" id="cash" name="payment" value="COD" /> COD</label>
+                  <label><input type="radio" id="cahsless" name="payment" value="Other Payment" /> Other Payment</label>
+                </div>
+
+                <label class="labelpayment" class="labelpayment" for="dompet">Digital Wallets</label>
+                <select class="dropdown" class="dropdown" name="dompet" id="dompet">
+                  <option value="" selected="selected">Select Wallet</option>
+                  <option value="Gopay">GoPay</option>
+                  <option value="Shopee Pay">Shopee Pay</option>
+                  <option value="Tokopedia">TokoPedia</option>
+                  <option value="DANA">DANA</option>
+                  <option value="Link Aja">Link Aja</option>
+                </select>
+
+                <label class="labelpayment" for="transferbank">Bank transfer</label>
+                <select class="dropdown" name="transferbank" id="transferbank">
+                  <option value="" selected="selected">Select Bank</option>
+                  <option value="BCA">Bank BCA</option>
+                  <option value="BRI">Bank BRI</option>
+                  <option value="BSI">Bank Syariah Indonesia (BSI)</option>
+                  <option value="Mandiri">Bank Mandiri</option>
+                  <option value="BNI">Bank BNI</option>
+                </select>
+
+                <label class="labelpayment" for="transferbank">Pay Via Agents</label>
+                <select class="dropdown" name="subject" id="subject">
+                  <option value="" selected="selected">Select Agent</option>
+                  <option value="">BRI Link</option>
+                  <option value="">BNI Agen46</option>s
+                  <option value="">Alfamart / Alfamidi / Dan+Dan</option>
+                  <option value="">Indomart</option>
+                </select>
+
+              </div>
+
+            </div>
+            <label> <input type="checkbox" checked="checked" name="sameadr" /> Shipping address same as billing </label>
+            <input type="submit" value="Checkout" class="btn" />
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </form>
+  <script src="JS/checkout.js"></script>
+  <script src="JS/script.js"></script>
+
+  <script>
+    feather.replace();
+  </script>
+</body>
+
+</html>
