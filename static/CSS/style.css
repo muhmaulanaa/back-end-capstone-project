@@ -90,7 +90,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  padding-right: 40px;
+  padding-right: 50px;
   background-color: var(--primary);
   position: fixed;
   width: 100%;
@@ -102,9 +102,14 @@ header {
   color: var(--muda);
 }
 
+svg {
+  margin-bottom: -5px;
+  margin-right: 1px;
+}
+
 .nav-list a {
   color: #e2ede9;
-  padding: 15px;
+  padding: 13px;
   font-weight: 500;
 }
 
@@ -112,29 +117,37 @@ header {
   color: #45f5b4;
 }
 
-.login {
+/* login button */
+.loginnn {
   background-color: var(--primary);
-  border-radius: 50%;
-  padding: 5px;
-  padding-bottom: 1px;
+  border: 2px solid #4af3b5;
+  border-radius: 30px;
   color: var(--muda);
+  padding: 5px 20px;
   text-decoration: none;
+  display: flex;
+  align-items: center; /* Mengatur teks ke posisi tengah secara vertikal */
+  justify-content: center; /* Mengatur teks ke posisi tengah secara horizontal */
+  font-size: 14px;
+  margin: 4px 2px;
   cursor: pointer;
-  text-decoration: none;
-  z-index: 10000;
+  font-family: "Poppins";
 }
 
-.login:hover {
-  background-color: #45f5b4;
-  color: var(--primary);
-  z-index: 10000;
-  border-radius: 50%;
+.loginnn:hover {
+  background-color: #37a77d;
 }
 
-.login i {
-  padding-right: 5px;
+.btn-navbar i {
   z-index: 10000;
-  font-size: 35px;
+  font-size: 20px;
+  padding-right: 8px;
+}
+
+.btn-navbar a button {
+  z-index: 10000;
+  font-size: 15px;
+  font-family: "Poppins";
 }
 
 /* ======= */
@@ -321,7 +334,8 @@ ul {
 
 .footer {
   background-color: var(--primary);
-  padding: 70px 0;
+  padding-top: 50px;
+  padding-bottom: 20px;
 }
 
 .footer-col {
@@ -387,7 +401,37 @@ ul {
   background-color: #2ccea0;
 }
 
+/* Copyright */
+.garis-footer {
+  color: #e2ede9;
+  height: 1px;
+  width: 100%;
+}
+
+.copyright p {
+  background-color: #1e463b;
+  color: #e2ede9;
+  bottom: 0;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 300;
+  font-size: 15px;
+}
+
 /* Media Queries */
+@media (max-width: 890px) {
+  .nav-list a {
+    font-size: 15px;
+  }
+  svg {
+    width: 20px;
+  }
+  .nav-list {
+    gap: 5px;
+  }
+}
+
 /* Tablet */
 @media (max-width: 768px) {
   /* RESPONSIVE VIDEO */

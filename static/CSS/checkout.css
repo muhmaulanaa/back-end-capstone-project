@@ -1,11 +1,34 @@
-.icon-back a i{
-  font-size: 27px;
-  text-decoration: none;
-  color: #fff;
+.header {
+  display: flex;
+  width: 100%;
 }
 
-.icon-back a i:hover{
-  color: #04aa6d;
+.header h1 {
+  font-size: 25px;
+  padding-top: 6px;
+  margin-left: 25px;
+  margin-right: 40px auto;
+  font-weight: 300;
+}
+
+.icon-back a i {
+  font-size: 27px;
+  text-decoration: none;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding-top: 7px;
+  padding-left: 5px;
+  margin-left: 40%;
+  margin-top: 10%;
+  border-radius: 2px;
+}
+
+.icon-back a i:hover {
+  color: white;
+  background-color: #299c80;
+  border-radius: 50%;
 }
 
 .rowcheckout {
@@ -15,6 +38,12 @@
   flex-wrap: wrap;
   overflow: hidden;
   margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.price b{
+  color: black;
+  font-weight: bold;
 }
 
 h3,
@@ -28,9 +57,13 @@ h2 {
 
 .col-25 {
   -ms-flex: 15%; /* IE10 */
-  flex: 25%;
+  flex: 10%;
+  margin-left: 20px;
   margin-right: 20px;
-  margin-top: 10px;
+  margin-top: 27px;
+  padding-top: 2px;
+  background-color: #bed1cc;
+  border-radius: 10px;
 }
 
 .col-50 {
@@ -38,45 +71,46 @@ h2 {
   flex: 25%;
   margin-top: -10px;
   margin-bottom: -10px;
+  background-color: var(--primary);
+  color: var(--muda);
+  border-radius: 10px;
+}
+
+.col-50 h3{
+  text-align: center;
+  font-size: 23px;
 }
 
 .col-75 {
   -ms-flex: 75%; /* IE10 */
   flex: 50%;
   margin-bottom: -20px;
+  border-radius: 10px;
 }
 
 .col-25,
 .col-50,
 .col-75 {
-  padding: 20px 16px;
-}
-
-.container {
-  background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-  margin: 20px;
+  padding: 25px 20px;
 }
 
 input[type="text"] {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
   padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #333;
-  color: white;
+  border-radius: 8px;
+  background-color: #bed1cc;
+  color: var(--primary);
+  font-family: 'Poppins';
+}
+
+input::placeholder{
+  color: #1c6654;
 }
 
 label {
   margin-bottom: 10px;
   display: block;
-}
-
-.labelpayment {
-  margin-top: 14px;
 }
 
 .icon-container {
@@ -86,21 +120,22 @@ label {
 }
 
 .btn {
-  font-family: 'Poppins';
-  background-color: #04aa6d;
-  color: white;
+  font-family: "Poppins";
+  background-color: var(--primary);
+  color: var(--muda);
+  font-weight: bold;
   padding: 12px;
-  margin: 10px 0;
+  margin-top: 10px ;
   border: none;
-  width: 100%;
-  border-radius: 3px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 15px;
   align-items: center;
+  width: 100%;
 }
 
 .btn:hover {
-  background-color: #45a049;
+  background-color: #299c80;
 }
 
 span.price {
@@ -115,28 +150,49 @@ option {
   background-color: #333;
 }
 
-.radio {
-  display: flex;
-  gap: 25%;
-}
-
 .dropdown {
+  font-family: 'Poppins';
   width: 100%;
   height: 38px;
-  border: 0.5px solid #ccc;
-  border-radius: 3px;
-  font-size: 15px;
+  border-radius: 7px;
+  font-size: 14px;
   padding: 5px;
-  color: white;
-  background-color: #333;
+  color: var(--primary);
+  background-color: #bed1cc;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+.dropdown option value:hover{
+  background-color: rgb(174, 179, 184);;
+}
+
+@media (max-width: 900px) {
+  .rowcheckout {
+    flex-direction: column; 
+  }
+  .col-25 {
+    order: 1; 
+  }
+  .col-50 {
+    order: 2; 
+    width: 100%; 
+    padding-bottom: 20px;
+  }
+  .col-75 {
+    order: 3; 
+    width: 100%; 
+  }
+}
+
 @media (max-width: 800px) {
   .row {
     flex-direction: column-reverse;
   }
   .col-25 {
     margin-bottom: 20px;
+  }
+
+  .header h1{
+    font-size: 20px;
+    padding-top: 8px;
   }
 }
