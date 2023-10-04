@@ -2,7 +2,9 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ================= */
 /*manual button next*/
+/* ================= */
 .slide img {
   width: 100%;
   height: fit-content;
@@ -49,9 +51,9 @@ html {
   background-color: #ddd;
 }
 
-/* ======================== */
-/* shopping cart start*/
-/* ======================== */
+/* ============== */
+/* shopping cart */
+/* ============== */
 .container-shoppping {
   height: 70px;
 }
@@ -110,7 +112,6 @@ html {
   column-gap: 20px;
   row-gap: 20px;
   margin-top: 50px;
-  /* justify-items: left; */
   padding: 0 20px;
   width: 100%;
   margin-top: 30px;
@@ -153,7 +154,7 @@ html {
   margin: 0 5px;
 }
 
-/* Styling untuk tombol decrement */
+/* tombol decrement */
 .decrement {
   background-color: var(--primary);
   color: #fff;
@@ -168,11 +169,11 @@ html {
   align-items: center;
 }
 
-.decrement:hover{
+.decrement:hover {
   background-color: #469483;
 }
 
-/* Styling untuk tombol increment */
+/* tombol increment */
 .increment {
   background-color: var(--primary);
   color: #fff;
@@ -186,7 +187,7 @@ html {
   align-items: center;
 }
 
-.increment:hover{
+.increment:hover {
   background-color: #469483;
 }
 
@@ -234,7 +235,7 @@ html {
   color: #add6cb;
 }
 
-.card .checkout div:hover{
+.card .checkout div:hover {
   background-color: #70a593;
   color: #12201d;
 }
@@ -245,7 +246,7 @@ html {
   font-weight: 300;
 }
 
-.card .checkout div:nth-child(2):hover{
+.card .checkout div:nth-child(2):hover {
   background-color: #1f312e;
 }
 
@@ -277,11 +278,9 @@ html {
   border-radius: 5px;
 }
 
-/* ================== */
-/* shopping cart end */
-/* ================== */
-
-/*products*/
+/* ========= */
+/* products*/
+/* ========= */
 .products {
   padding: 10px;
   text-align: center;
@@ -308,7 +307,6 @@ html {
   font-weight: bold;
 }
 
-/* Product Style */
 .menu-items {
   display: inline-block;
   width: 250px;
@@ -323,6 +321,7 @@ html {
   text-align: center;
   font-size: 16px;
 }
+
 .menu-items img {
   max-width: 100%;
   height: 12rem;
@@ -336,18 +335,22 @@ html {
 
 @media screen and (max-width: 767px) {
   .menu-items {
-    width: minmax(200px); /* Setiap produk memenuhi lebar penuh pada layar kecil */
+    width: minmax(200px);
+    /* Setiap produk memenuhi lebar penuh pada layar kecil */
     margin-right: 10px;
     padding: 10px;
   }
+
   .prev-button,
   .next-button {
     margin-top: -120px;
     scale: 0.75;
   }
+
   .next-button {
     right: 1px;
   }
+
   .prev-button {
     left: 1px;
   }
@@ -385,13 +388,13 @@ html {
     left: calc(100% - 250px);
   }
 
-  /* Styling untuk tombol decrement */
+  /* tombol decrement */
   .decrement {
     width: 10px;
     height: 20px;
   }
 
-  /* Styling untuk tombol increment */
+  /* tombol increment */
   .increment {
     padding: 5px 10px;
     border-radius: 5px;
@@ -399,8 +402,7 @@ html {
     height: 20px;
   }
 
-  /* Styling Quantity*/
-
+  /* Quantity*/
   .quantity-display {
     width: 20px;
     height: 20px;
@@ -435,7 +437,8 @@ html {
     font-weight: 300;
   }
 }
-/* Style untuk tombol "Add to Cart" */
+
+/* tombol "Add to Cart" */
 .add-to-cart-button {
   background-color: #4caf50;
   color: white;
@@ -456,7 +459,7 @@ html {
 
 @media screen and (max-width: 560px) {
   .menu-items {
-    width: 170px; /* Setiap produk memenuhi lebar penuh pada layar kecil */
+    width: 170px;
     margin: 3px;
     padding: 5px;
   }
@@ -488,19 +491,24 @@ html {
     font-size: 25px;
     margin-left: 80px;
   }
+
   .shopping img {
     width: 40px;
     margin-right: 0;
   }
+
   .shopping span {
     right: 22px;
   }
+
   .categories-container a {
     font-size: smaller;
   }
+
   .categories-container {
     margin-bottom: -20px;
   }
+
   .container-shoppping {
     margin-bottom: -15px;
     margin-top: -15px;
@@ -512,10 +520,12 @@ html {
     font-size: 20px;
     margin-left: 40px;
   }
+
   .shopping img {
     width: 40px;
     margin-left: 10px;
   }
+
   .shopping span {
     right: 22px;
   }
@@ -529,21 +539,21 @@ button i {
   padding-right: 8px;
 }
 
-/* CSS for Cart Item Count */
+/* Cart Item Count */
 #cart {
   position: relative;
 }
 
 #cart-item-count {
   position: absolute;
-  top: 5px; /* Adjust the vertical position as needed to make it closer to the top */
-  right: 5px; /* Adjust the horizontal position as needed to make it closer to the right */
-  background-color: #ff5733; /* Background color of the count badge (red) */
-  color: white; /* Text color of the count badge (white) */
-  font-size: 12px; /* Font size of the count badge */
-  width: 20px; /* Width of the count badge */
-  height: 20px; /* Height of the count badge */
-  border-radius: 50%; /* Make it a circle */
+  top: 5px;
+  right: 5px;
+  background-color: #ff5733;
+  color: white;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
