@@ -3,6 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const db = require("./db");
 const sequelize = require("sequelize");
+const bcrypt = require("bcrypt");
 
 // init express server and router
 const app = express();
@@ -19,8 +20,12 @@ router.get("/", function (req, res, next) {
   res.redirect("http://localhost:3000/static/index.html");
 });
 
+const saltRounds = 10; // Menentukan seberapa banyak putaran salt yang akan digunakan
+
+// ...
+
 // Endpoint untuk registrasi pengguna
-router.post("/register", function (req, res, next) {
+router.post("/register", async function (req, res, next) {
   if (
     req.body.username === "" ||
     req.body.password === "" ||
@@ -32,28 +37,35 @@ router.post("/register", function (req, res, next) {
     return;
   }
 
-  db.user
-    .create({
+  try {
+    // Hash password menggunakan bcrypt
+    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
+    // Simpan data pengguna ke database, termasuk password yang sudah di-hash
+    const userData = {
       username: req.body.username,
-      password: req.body.password,
       email: req.body.email,
-    })
-    .then(function (data) {
-      res.status(201).json({
-        message: "User berhasil terdaftar",
-        data: data,
-      });
-    })
-    .catch(function (err) {
-      console.log(err);
-      res.status(500).json({
-        message: err,
-      });
+      password: hashedPassword, // Password yang sudah di-hash
+    };
+
+    const data = await db.user.create(userData);
+
+    res.status(201).json({
+      message: "User berhasil terdaftar",
+      data: data,
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: err,
+    });
+  }
 });
 
+// ...
+
 // Endpoint untuk login pengguna
-router.post("/login", function (req, res, next) {
+router.post("/login", async function (req, res, next) {
   if (req.body.username === "" || req.body.password === "") {
     res.status(400).json({
       message: "EMPTY FIELD",
@@ -61,31 +73,42 @@ router.post("/login", function (req, res, next) {
     return;
   }
 
-  db.user
-    .findOne({
+  try {
+    const userData = await db.user.findOne({
       where: {
         username: req.body.username,
-        password: req.body.password,
       },
-    })
-    .then(function (data) {
-      if (data) {
-        res.status(200).json({
-          message: "Success login",
-          data: data,
-        });
-      } else {
-        res.status(401).json({
-          message: "Login failed. Invalid credentials.",
-        });
-      }
-    })
-    .catch(function (err) {
-      console.log(err);
-      res.status(500).json({
-        message: err,
-      });
     });
+
+    if (!userData) {
+      res.status(401).json({
+        message: "Login failed. Invalid credentials.",
+      });
+      return;
+    }
+
+    // Membandingkan password yang diterima dengan hash password di database
+    const passwordMatch = await bcrypt.compare(
+      req.body.password,
+      userData.password
+    );
+
+    if (passwordMatch) {
+      res.status(200).json({
+        message: "Success login",
+        data: userData,
+      });
+    } else {
+      res.status(401).json({
+        message: "Login failed. Invalid credentials.",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: err,
+    });
+  }
 });
 
 module.exports = router;
