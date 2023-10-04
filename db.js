@@ -1,5 +1,6 @@
 const sequelize = require("sequelize");
 const mysql = require("mysql2");
+const db = require("./db"); // Import model "Product"
 const fs = require("fs");
 const path = require("path");
 
@@ -30,7 +31,55 @@ const user = conn.define(
   }
 );
 
+const Product = conn.define(
+  "Product",
+  {
+    id: {
+      type: sequelize.DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    category: { type: sequelize.DataTypes.STRING, allowNull: false },
+    name: { type: sequelize.DataTypes.STRING, allowNull: false },
+    price: { type: sequelize.DataTypes.INTEGER, allowNull: false },
+    imageSrc: { type: sequelize.DataTypes.STRING, allowNull: false },
+  },
+  {
+    freezeTableName: true,
+    timestamps: false,
+  }
+);
+
+// Baca file JSON
+const rawData = fs.readFileSync(".static/assets/products.json");
+const productsData = JSON.parse(rawData);
+
+// Membuat array yang berisi objek-objek Product dari data JSON
+const products = productsData.map((product) => ({
+  category: product.category,
+  name: product.name,
+  price: product.price,
+  imageSrc: product.imageSrc,
+}));
+
+// Synchronize model "Product" dengan database
+db.Product.sync()
+  .then(() => {
+    // Memasukkan data produk ke dalam tabel "Product"
+    return db.Product.bulkCreate(products);
+  })
+  .then(() => {
+    console.log('Data produk berhasil dimuat ke dalam tabel "Product".');
+  })
+  .catch((err) => {
+    console.error(
+      "Error syncing Product model atau memasukkan data produk:",
+      err
+    );
+  });
+
 module.exports = {
   conn,
   user,
+  Product,
 };
