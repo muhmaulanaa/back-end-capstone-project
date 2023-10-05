@@ -41,13 +41,13 @@ function showSlide(n) {
 }
 
 // =============
-//fetching json
+//fetching products from database
 // =============
-fetch("assets/products.json")
+fetch("http://localhost:3000/products")
   .then((response) => response.json())
   .then((data) => {
     // Loop melalui data produk dan tambahkan setiap produk ke dalam DOM
-    data.products.forEach((product) => {
+    data.forEach((product) => {
       addProductToDOM(product);
     });
   });
@@ -84,6 +84,7 @@ function addProductToDOM(product) {
   productDiv.appendChild(button);
   menuItems.appendChild(productDiv);
 }
+
 
 // ===============
 // Shopping  cart
