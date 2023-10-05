@@ -52,7 +52,7 @@
         </div>
     </section>
     <script>
-        var btn = document.getElementById("buttonLogin")
+var btn = document.getElementById("buttonLogin")
 var username = document.getElementById("username")
 var password = document.getElementById("password")
 
@@ -76,7 +76,7 @@ function login() {
             return Promise.reject(response);
         }).then(function (data) {
             alert(data.message);
-            localStorage.setItem("user", JSON.stringify(data.data))
+            localStorage.setItem("user", JSON.stringify(data.data));
             window.location.replace("http://localhost:3000/static/index.html")
         }).catch(function (error) {
             console.log(error);

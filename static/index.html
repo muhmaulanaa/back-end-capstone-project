@@ -46,12 +46,17 @@
             </div>
 
             <ul class="nav-list">
-                <li><a href="http://localhost:3000/static/index.html" class="nav-link" id="btn-active"><i data-feather="home"></i> Home</a></li>
-                <li><a href="http://localhost:3000/static/about-us.html" class="nav-link"><i data-feather="info"></i> About Us</a></li>
-                <li><a href="http://localhost:3000/static/products.html" class="nav-link"><i data-feather="shopping-bag"></i> Products</a></li>
-                <li><a href="http://localhost:3000/static/stores.html" class="nav-link"><i data-feather="map-pin"></i> Stores</a>
+                <li><a href="http://localhost:3000/static/index.html" class="nav-link" id="btn-active"><i
+                            data-feather="home"></i> Home</a></li>
+                <li><a href="http://localhost:3000/static/about-us.html" class="nav-link"><i data-feather="info"></i>
+                        About Us</a></li>
+                <li><a href="http://localhost:3000/static/products.html" class="nav-link"><i
+                            data-feather="shopping-bag"></i> Products</a></li>
+                <li><a href="http://localhost:3000/static/stores.html" class="nav-link"><i data-feather="map-pin"></i>
+                        Stores</a>
                 </li>
-                <li class="account-bar"><a href="http://localhost:3000/static/login.html" class="nav-link"><i data-feather="user"></i>
+                <li class="account-bar"><a href="http://localhost:3000/static/login.html" class="nav-link"><i
+                            data-feather="user"></i>
                         Account</a></li>
             </ul>
         </nav>
@@ -59,7 +64,7 @@
         <!-- menu account sebelum responsive -->
         <div class="btn-navbar">
             <a href="http://localhost:3000/static/login.html">
-                <button class="loginnn" type="button">
+                <button id="loginButton" class="loginnn" type="button">
                     <i class='bx bxs-user'></i> Login
                 </button>
             </a>
@@ -196,7 +201,16 @@
     <script>
         feather.replace();
     </script>
-
+    <script>
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user) {
+             //ubah tombol login
+             var loginButton = document.getElementById("loginButton");
+             if(loginButton){
+                 loginButton.innerHTML = '<i class="bx bxs-user"></i>' + user.username;
+             }
+        }
+    </script>
 </body>
 
 </html>
