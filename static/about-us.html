@@ -346,6 +346,16 @@
   <script>
     AOS.init();
   </script>
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+         //ubah tombol login
+         var loginButton = document.getElementById("loginButton");
+         if(loginButton){
+             loginButton.innerHTML = '<i class="bx bxs-user"></i>' + user.username;
+         }
+    }
+</script>
 </body>
 
 </html>
