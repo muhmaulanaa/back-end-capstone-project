@@ -63,10 +63,14 @@
 
         <!-- menu account sebelum responsive -->
         <div class="btn-navbar">
-            <a href="http://localhost:3000/static/login.html">
-                <button id="loginButton" class="loginnn" type="button">
-                    <i class='bx bxs-user'></i> Login
+            <a href="login.html">
+                <button class="loginnn" type="button">
+                    <i class='bx bxs-user-circle'></i> Login
                 </button>
+            </a>
+
+            <a class="logout-button" href="#">
+                <i data-feather="log-out"></i>
             </a>
         </div>
     </header>
@@ -74,7 +78,7 @@
     <!-- Video -->
     <section class="video_opening">
         <div class="video-wrapper">
-            <video autoplay loop>
+            <video autoplay loop muted>
                 <source src="assets/video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
@@ -201,16 +205,26 @@
     <script>
         feather.replace();
     </script>
-    <script>
-        const user = JSON.parse(localStorage.getItem("user"));
-        if (user) {
-             //ubah tombol login
-             var loginButton = document.getElementById("loginButton");
-             if(loginButton){
-                 loginButton.innerHTML = '<i class="bx bxs-user"></i>' + user.username;
-             }
-        }
-    </script>
+<script>
+    const user = JSON.parse(localStorage.getItem("user"));
+    const loginButton = document.querySelector(".loginnn");
+    const logoutButton = document.querySelector(".logout-button");
+
+    if (user) {
+        // Jika ada data pengguna dalam local storage
+        loginButton.style.display = "none"; // Sembunyikan tombol login
+        logoutButton.style.display = "block"; // Tampilkan tombol logout
+                // Tambahkan elemen span untuk menampilkan nama pengguna
+                const userNameSpan = document.createElement("span");
+        userNameSpan.textContent = user.username;
+        userNameSpan.style.marginRight = "5px"; // Sesuaikan margin jika diperlukan
+
+        // Sisipkan elemen span sebelum tombol logout
+        const navbar = document.querySelector(".btn-navbar");
+        navbar.insertBefore(userNameSpan, logoutButton);
+    }
+</script>
+
 </body>
 
 </html>
