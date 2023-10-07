@@ -27,6 +27,15 @@ const Cart = conn.define("Cart", {
       key: "id",
     },
   },
+  productId: {
+    // Tambahkan kolom product_id
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: "Product", // Ganti "Product" dengan nama model Produk yang benar
+      key: "id",
+    },
+  },
 });
 
 module.exports = {
