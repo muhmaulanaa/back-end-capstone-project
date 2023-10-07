@@ -1,3 +1,4 @@
+
 const { DataTypes } = require("sequelize");
 const conn = require("../db").conn; // Import koneksi database
 
@@ -30,3 +31,4 @@ const Checkout = conn.define(
 module.exports = {
   Checkout,
 };
+

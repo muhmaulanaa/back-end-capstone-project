@@ -1,5 +1,6 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 
@@ -71,6 +72,10 @@ module.exports = {
       );
 
       if (passwordMatch) {
+        const token = jwt.sign(
+          { userId : userData.id }, 'secret' , {expiresIn: '1h'} 
+        );
+        console.log("Token: ",token);
         res.status(200).json({
           message: "Success login",
           data: userData,
