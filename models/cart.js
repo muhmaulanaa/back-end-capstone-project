@@ -27,14 +27,6 @@ const Cart = conn.define("Cart", {
       key: "id",
     },
   },
-  productId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: "Product",
-      key: "id",
-    },
-  },
 });
 
 module.exports = {
