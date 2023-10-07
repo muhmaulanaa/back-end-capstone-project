@@ -120,14 +120,17 @@ svg {
 /* login button */
 .loginnn {
   background-color: var(--primary);
-  border: 2px solid #4af3b5;
+  border: 2px solid var(--muda);
   border-radius: 30px;
   color: var(--muda);
-  padding: 5px 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 10px;
   text-decoration: none;
   display: flex;
-  align-items: center; /* Mengatur teks ke posisi tengah secara vertikal */
-  justify-content: center; /* Mengatur teks ke posisi tengah secara horizontal */
+  align-items: center;
+  justify-content: center;
   font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
@@ -135,12 +138,17 @@ svg {
 }
 
 .loginnn:hover {
-  background-color: #37a77d;
+  background-color: var(--muda);
+  color: #1e463b;
+}
+
+.btn-navbar {
+  display: flex;
 }
 
 .btn-navbar i {
   z-index: 10000;
-  font-size: 20px;
+  font-size: 30px;
   padding-right: 8px;
 }
 
@@ -148,6 +156,27 @@ svg {
   z-index: 10000;
   font-size: 15px;
   font-family: "Poppins";
+}
+
+.btn-navbar a {
+  text-decoration: none;
+  color: var(--muda);
+}
+
+.logout-button {
+  display: none;
+  font-size: 15px;
+  padding: 5px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  right: 0;
+  border-radius: 50%;
+}
+
+.logout-button:hover {
+  background-color: var(--muda);
+  color: var(--primary);
 }
 
 /* ======= */
