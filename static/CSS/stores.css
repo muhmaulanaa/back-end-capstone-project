@@ -42,7 +42,8 @@
   border-radius: 12px;
   transition: 0.5s;
   box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
-  margin-left: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 100px;
   font-size: 13px;
   font-family: "Poppins", sans-serif;
@@ -128,6 +129,7 @@
   .container .card {
     width: 270px;
     border-radius: 15px;
+    margin-right: 20px;
   }
 
   .container .card .img-box {
