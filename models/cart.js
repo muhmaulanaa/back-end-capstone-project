@@ -14,16 +14,30 @@ const Cart = conn.define("Cart", {
   harga: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
+    validate: {
+      min: 0, // Validasi harga harus positif
+    },
   },
   total_harga: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
+    validate: {
+      min: 0, // Validasi total harga harus positif
+    },
   },
-  userId: {
+  userid: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "user",
+      model: "User",
+      key: "id",
+    },
+  },
+  product_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: "Product",
       key: "id",
     },
   },

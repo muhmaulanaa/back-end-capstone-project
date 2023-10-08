@@ -76,6 +76,7 @@ function login() {
             return Promise.reject(response);
         }).then(function (data) {
             alert(data.message);
+            localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.data));
             window.location.replace("http://localhost:3000/static/index.html")
         }).catch(function (error) {

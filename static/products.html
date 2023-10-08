@@ -135,16 +135,7 @@
         <script>
             feather.replace();
         </script>
-        <script>
-            const user = JSON.parse(localStorage.getItem("user"));
-            if (user) {
-                 //ubah tombol login
-                 var loginButton = document.getElementById("loginButton");
-                 if(loginButton){
-                     loginButton.innerHTML = '<i class="bx bxs-user"></i>' + user.username;
-                 }
-            }
-        </script>
+       <script src="JS/login-logout.js"></script>
 
 </body>
 
