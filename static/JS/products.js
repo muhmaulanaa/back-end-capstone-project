@@ -188,6 +188,14 @@ function addToCartAndUpdate(itemName, itemPrice, itemImageSrc) {
 //add event to button add-to-cart
 document.querySelector(".menu-item").addEventListener("click", (event) => {
   if (event.target.classList.contains("add-to-cart-button")) {
+    //cek apakah user sudah login
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Silahkan login untuk aksi ini!");
+      return;
+    }
+
+    //jika pengguna sudah login lanjut seperti biasa
     const productDiv = event.target.closest(".menu-items"); // Mencari elemen terdekat dengan class "menu-items"
     if (productDiv) {
       const productName = productDiv.querySelector("h3").textContent;
@@ -202,6 +210,66 @@ document.querySelector(".menu-item").addEventListener("click", (event) => {
     }
   }
 });
+
+//Fetch to backend for processing shopping cart
+const checkoutButton = document.querySelector(".checkout");
+
+checkoutButton.addEventListener("click", function () {
+  const cartItems = Array.from(document.querySelectorAll(".cart-item")).map(item => {
+    const productName = item.dataset.productName;
+    const itemPriceElement = item.querySelector(".item-price"); // Sesuaikan dengan atribut yang digunakan pada elemen HTML
+    const quantityDisplayElement = item.querySelector(".quantity-display");
+
+    if (itemPriceElement && quantityDisplayElement) {
+      const itemPrice = parseFloat(itemPriceElement.textContent.replace("Rp. ", ""));
+      const quantity = parseInt(quantityDisplayElement.textContent);
+      return {
+        nama_barang: productName, // Sesuaikan dengan atribut yang diharapkan oleh server
+        harga: itemPrice, // Sesuaikan dengan atribut yang diharapkan oleh server
+        quantity
+      };
+    } else {
+      return null;
+    }
+  });
+
+  const validCartItems = cartItems.filter(item => item !== null);
+  const token = localStorage.getItem("token");
+
+  if (validCartItems.length === 0) {
+    alert("Keranjang belanja kosong. Tambahkan produk ke keranjang terlebih dahulu.");
+    return;
+  }
+
+  const cartData = {
+    items: validCartItems
+  };
+
+  fetch("http://localhost:3000/checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(cartData)
+  })
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    })
+    .then(function (data) {
+      alert(data.message);
+      document.querySelector(".cart-list").innerHTML = "";
+      document.querySelector(".total").textContent = "Rp. 0";
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
+
+
 
 // Open and Close Shopping Cart
 const shoppingCart = document.querySelector(".shopping img");
