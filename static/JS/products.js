@@ -190,7 +190,7 @@ document.querySelector(".menu-item").addEventListener("click", (event) => {
   if (event.target.classList.contains("add-to-cart-button")) {
     //cek apakah user sudah login
     const token = localStorage.getItem("token");
-    if(!token){
+    if (!token) {
       alert("Silahkan login untuk aksi ini!");
       return;
     }
@@ -213,76 +213,62 @@ document.querySelector(".menu-item").addEventListener("click", (event) => {
 
 //Fetch to backend for processing shopping cart
 const checkoutButton = document.querySelector(".checkout");
-console.log(checkoutButton);
 
-checkoutButton.addEventListener("click", function() {
-  // Dapatkan data keranjang dari variabel atau elemen HTML yang menyimpannya
+checkoutButton.addEventListener("click", function () {
   const cartItems = Array.from(document.querySelectorAll(".cart-item")).map(item => {
     const productName = item.dataset.productName;
-    
-    // Periksa apakah elemen .item-price dan .quantity-display ada
-    const itemPriceElement = item.querySelector("p");
-    const quantityDisplayElement = item.querySelector(".quantity-display");    
-    
-    // Cek apakah elemen-elemen tersebut ada
+    const itemPriceElement = item.querySelector(".item-price"); // Sesuaikan dengan atribut yang digunakan pada elemen HTML
+    const quantityDisplayElement = item.querySelector(".quantity-display");
+
     if (itemPriceElement && quantityDisplayElement) {
       const itemPrice = parseFloat(itemPriceElement.textContent.replace("Rp. ", ""));
       const quantity = parseInt(quantityDisplayElement.textContent);
       return {
-        productName,
-        itemPrice,
+        nama_barang: productName, // Sesuaikan dengan atribut yang diharapkan oleh server
+        harga: itemPrice, // Sesuaikan dengan atribut yang diharapkan oleh server
         quantity
       };
     } else {
-      // Tindakan jika elemen tidak ditemukan (misalnya, lewati item ini)
       return null;
     }
   });
 
-  // Hapus item yang tidak ditemukan dari hasil pemetaan
   const validCartItems = cartItems.filter(item => item !== null);
-
-  // Dapatkan token dari local storage
   const token = localStorage.getItem("token");
 
-  // Jika tidak ada item dalam keranjang, beri peringatan
   if (validCartItems.length === 0) {
     alert("Keranjang belanja kosong. Tambahkan produk ke keranjang terlebih dahulu.");
     return;
   }
 
-  // Buat data keranjang untuk dikirim ke server
   const cartData = {
     items: validCartItems
   };
-  console.log("Data Keranjang: ",cartData);
-  // Lakukan permintaan HTTP untuk mengirim data keranjang ke server
+
   fetch("http://localhost:3000/checkout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}` // Sertakan token untuk otorisasi
+      "Authorization": `Bearer ${token}`
     },
-    body: JSON.stringify(cartData),
+    body: JSON.stringify(cartData)
   })
-    .then(function(response) {
+    .then(function (response) {
       if (response.ok) {
         return response.json();
       }
       return Promise.reject(response);
     })
-    .then(function(data) {
-      // Lakukan sesuatu setelah checkout berhasil, seperti membersihkan keranjang di frontend
+    .then(function (data) {
       alert(data.message);
-      // Hapus item dari keranjang
       document.querySelector(".cart-list").innerHTML = "";
-      // Update tampilan jumlah produk di keranjang
       document.querySelector(".total").textContent = "Rp. 0";
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log(error);
     });
 });
+
 
 
 // Open and Close Shopping Cart

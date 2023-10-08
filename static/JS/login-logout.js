@@ -3,6 +3,11 @@
     const loginButton = document.querySelector(".loginnn");
     const logoutButton = document.querySelector(".logout-button");
 
+    if(token){
+        console.log("Token set!");
+    }else{
+        console.log("Token tidak tersedia");
+    }
     if (user) {
         // Jika ada data pengguna dalam local storage
         loginButton.style.display = "none"; // Sembunyikan tombol login
