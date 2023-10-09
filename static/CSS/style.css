@@ -35,6 +35,7 @@ header {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  justify-content: center;
 }
 
 .bar {
@@ -51,10 +52,31 @@ header {
   list-style-type: none;
   padding: 0;
   display: flex;
-  gap: 20px;
+  gap: 15px;
 }
 
-.nav-list a {
+.navbar-menu span {
+  display: none;
+}
+
+.nav-list span {
+  font-size: 15px;
+  border: 1px solid #e2ede9;
+  color: #e2ede9;
+  border-radius: 30px;
+  width: 125px;
+  margin-right: 5px;
+  margin-top: 7px;
+  text-align: center;
+  padding-top: 5px;
+  height: 35px;
+  font-family: "Poppins", "sans-Serif";
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-left: 20px;
+}
+
+.btn-navbar span .nav-list a {
   font-size: 18px;
 }
 
@@ -80,7 +102,7 @@ header {
 }
 
 .logo {
-  width: 190px;
+  width: 185px;
   height: auto;
   padding-top: 5px;
 }
@@ -90,7 +112,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  padding-right: 50px;
+  padding-right: 25px;
   background-color: var(--primary);
   position: fixed;
   width: 100%;
@@ -132,7 +154,7 @@ svg {
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  margin: 4px 2px;
+  margin: 7px 7px;
   cursor: pointer;
   font-family: "Poppins";
 }
@@ -144,6 +166,13 @@ svg {
 
 .btn-navbar {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-navbar1 {
+  display: none;
+  margin-top: -25px;
 }
 
 .btn-navbar i {
@@ -169,7 +198,6 @@ svg {
   padding: 5px;
   margin-top: 6px;
   margin-bottom: 10px;
-  margin-left: 10px;
   right: 0;
   border-radius: 50%;
 }
@@ -449,9 +477,10 @@ ul {
 }
 
 /* Media Queries */
-@media (max-width: 890px) {
+@media (max-width: 950px) {
   .nav-list a {
     font-size: 15px;
+    padding: 5px;
   }
   svg {
     width: 20px;
@@ -461,8 +490,11 @@ ul {
   }
 }
 
+@media (max-width: 819px) {
+}
+
 /* Tablet */
-@media (max-width: 768px) {
+@media (max-width: 819px) {
   /* RESPONSIVE VIDEO */
   .video_opening {
     width: 100%;
@@ -492,6 +524,9 @@ ul {
     display: flex;
     align-items: center;
   }
+  .navbar-menu span {
+    font-size: 12px;
+  }
 
   .nav-list {
     display: none;
@@ -513,9 +548,10 @@ ul {
   }
 
   .nav-list.active {
-    padding-top: 20px;
+    padding-top: 10px;
     display: flex;
     margin-top: -15px;
+    margin-bottom: 30px;
     max-height: 500px;
     transition: max-height 0.3s ease-in-out;
   }
@@ -543,6 +579,12 @@ ul {
     display: none;
   }
 
+  .btn-navbar1 {
+    display: block;
+    padding-bottom: 20px;
+    padding-left: 15px;
+  }
+
   .account-bar .nav-link {
     display: flex;
   }
@@ -550,7 +592,6 @@ ul {
   .account-bar a {
     padding: 0;
     margin: 0;
-    padding-bottom: 20px;
   }
 
   .account-bar a:hover {
@@ -635,6 +676,30 @@ ul {
     font-size: 8px;
     line-height: 1.5;
   }
+
+  .navbar-menu {
+    display: inline-flex;
+  }
+
+  .navbar-menu span {
+    font-size: 13px;
+    border: 2px solid #e2ede9;
+    color: #e2ede9;
+    border-radius: 30px;
+    width: fit-content;
+    margin-right: 10px;
+    margin-top: -2px;
+    text-align: center;
+    padding: 5px;
+    height: fit-content;
+    font-family: "Poppins", "sans-Serif";
+    font-weight: 500;
+    text-transform: capitalize;
+    display: inline-flex;
+  }
+  .loginnn {
+    font-size: smaller;
+  }
 }
 
 /* Mobile Phone */
@@ -646,6 +711,12 @@ ul {
     padding-top: 69px;
     position: relative;
     overflow: hidden;
+  }
+
+  .navbar-menu span {
+    font-size: 12;
+    width: fit-content;
+    height: fit-content;
   }
 
   /* RESPONSIVE ABOUT US */
@@ -735,6 +806,31 @@ ul {
     margin-bottom: 3.5px;
     line-height: 1.5;
     text-align: center;
+  }
+}
+
+@media (max-width: 415px) {
+  .navbar-menu span {
+    font-size: 10px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 3px;
+  }
+  .logo {
+    width: 150px;
+    height: auto;
+    padding-top: 5px;
+  }
+}
+@media (max-width: 300px) {
+  .navbar-menu span {
+    font-size: 9px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 3px;
+  }
+  .logo {
+    width: 130px;
   }
 }
 
